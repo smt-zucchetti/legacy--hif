@@ -1,6 +1,8 @@
 #create vendor folder
 composer install
 
+#add .env file
+
 #if dev
 
 #establish an ssh tunnel to the server
