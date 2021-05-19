@@ -14,45 +14,53 @@
 
 		<div data-id="{{$i}}" class="roomTypeContainer <?php echo ($i == 1)?'active':''; ?>">
 		    @include('partial/roomType', [
-		    	//'checkboxArr' => $configData['multiFields']['roomAmenities'.$i], 
-		    	//'labelArr' => $configData['multiFieldLabels']['roomAmenities'], '
-		    	'i' => $i, 
-
+		    	'i' => $i
 		    ])
 		</div>
 	@endfor
 
 	<script>
-		$('document').ready(function(){
-
-
-
-			$('.rtarrow').click(function(e){
-				e.preventDefault();
+		const arrows = document.querySelectorAll('.rtarrow')
+		arrows.forEach(arrow => 
+		{
+			arrow.addEventListener('click', (e)=>
+			{
+				const dir = Object.freeze({
+						Left: 'left',
+						Right: 'right'
+				})
+				let tgtClssLst = e.target.classList
+				let arrowDir = tgtClssLst.contains('rtleft') ? dir.Left : tgtClssLst.contains('rtright') ? dir.Right : null
 				
-				var curRT = $('.roomTypeContainer.active').data('id');
+				if(!arrowDir)
+				{
+					return
+				}
 
-				if($(this).attr('id') == 'rtleft'){
-					if(curRT > 1){
-						$('.roomTypeContainer').removeClass('active');
-						$('.roomTypeContainer').each(function(i,e){
-							if($(e).data('id') == curRT - 1){
-								$(e).addClass('active');
-							}
-						});
-					}
-				}else{
-					if(curRT < 10){
-						$('.roomTypeContainer').removeClass('active');
-						$('.roomTypeContainer').each(function(i,e){
-							if($(e).data('id') == curRT + 1){
-								$(e).addClass('active');
-							}
-						});
-					}
-				}	
-			});
-		});
+				const oldActiveRoomTypeContainer = document.querySelector('.roomTypeContainer.active')
+				const oldId = parseInt(oldActiveRoomTypeContainer.dataset.id)
+
+				if((arrowDir === dir.Left && oldId === 1) || (arrowDir === dir.Right && oldId === 10))
+				{
+					return
+				}
+
+				oldActiveRoomTypeContainer.classList.remove('active')
+
+				const newId = arrowDir === dir.Left ? oldId - 1 : arrowDir === dir.Right ? oldId + 1 : null
+				
+				if(!newId)
+				{
+					return
+				}
+				const el = document.querySelector(`.roomTypeContainer[data-id='${newId}']`)
+				
+				if(el)
+				{
+					el.classList.add('active')
+				}
+			})
+		})
 	</script>
 
 

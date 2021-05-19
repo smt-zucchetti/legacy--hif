@@ -1,11 +1,7 @@
 	<div class="form-row">
 		<h3>Room Descriptions {{$i}} (of 10) 
-			<a href="" id="rtleft" class="rtarrow">
-				<i class="fas fa-arrow-alt-circle-left"></i>
-			</a>
-			<a href id="rtright" class="rtarrow">
-				<i class="fas fa-arrow-alt-circle-right"></i>
-			</a>
+			<i class="rtleft rtarrow fas fa-arrow-alt-circle-left"></i>
+			<i class="rtright rtarrow fas fa-arrow-alt-circle-right"></i>
 		</h3>
 	</div>
 	<div class="form-row"><h4>**Please complete room description for EACH room type</h4></div>
