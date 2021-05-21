@@ -54,6 +54,8 @@
                     }
                 });
             </script>
+            <script src="{{ asset('./public/js/utils.js') }}"></script>
+            <script src="{{ asset('./public/js/main.js') }}"></script>
         </div>
     </body>
 </html>

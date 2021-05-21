@@ -70,7 +70,8 @@ class FormController extends Controller
             return view('loggedOut');
         }
 
-        self::_savePreviousPage($request, $page_no-1);
+        $prev_page_no = session()->get('prev_page_no') !== null ? session()->get('prev_page_no') : 1;
+        self::_savePage($request, $prev_page_no);
         
         session()->put('prev_page_no', $page_no);
         $viewType = session()->get('viewType');
@@ -91,8 +92,9 @@ class FormController extends Controller
 
     public function showThankYouPage(Request $request)
     {
-        self::_savePreviousPage($request);
-
+        $prev_page_no = session()->get('prev_page_no') !== null ? session()->get('prev_page_no') : 1;
+        self::_savePage($request, $prev_page_no);
+        
         //if(!self::_required_fields_empty())
         //{
             
@@ -210,17 +212,7 @@ class FormController extends Controller
         return $userFormData;
     }
 
-    public function _savePreviousPage(Request $request)
-    {
-        if(Input::post())
-        {
-            $prev_page_no = session()->get('prev_page_no') !== null ? session()->get('prev_page_no') : 1;
-            $user_form_data = self::_formDataToDB($request, $prev_page_no);
-            $user_form_data->save();
-        }
-    }
-
-    public function savePage(Request $request, $page_no)
+    public function _savePage(Request $request, $page_no)
     {
         if(Input::post())
         {

@@ -11,28 +11,7 @@
 		$prev_href = $curPage > 1 ? url('/')."/page/".($curPage - 1) : "#";
 		$next_href = $curPage < $pageCount ? url('/')."/page/".($curPage + 1) : "#";
 	@endphp
-	<a href="{{$prev_href}}">&#10502; Prev Page</a>&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="{{$next_href}}">Next Page &#10503;</a>
+	<a class="page_sel_a" href="{{$prev_href}}">&#10502; Prev Page</a>&nbsp;&nbsp;&nbsp;&nbsp;
+	<a class="page_sel_a" href="{{$next_href}}">Next Page &#10503;</a>
 </div>
 
-
-<script>
-	$(document).ready(function(){
-
-		$('#page_sel_btn').click(function(){
-			var url = "{{url('/')}}/page/" + $('#page_sel_dd').find(":selected").val();
-
-			ajaxSubmit(url);
-			window.location.href = url;
-		});
-	});
-
-	function ajaxSubmit(url)
-	{
-		$.ajax({
-			type: "POST",
-			url: url,
-			data: $('form#myForm').serialize()
-		});
-	}
-</script>

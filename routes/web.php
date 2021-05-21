@@ -51,5 +51,5 @@ Route::get("layout_test", "FormController@layout_test");
 
 
 
-Route::post('savePage/{page_no}', 'FormController@savePage');
+Route::post('savePage/{page_no}', 'FormController@_savePage');
 

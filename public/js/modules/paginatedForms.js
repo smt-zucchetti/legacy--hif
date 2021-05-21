@@ -6,20 +6,10 @@ arrows.forEach(arrow =>
 	arrow.addEventListener('click', (e)=>
 	{
 		const curPage = document.querySelector('#myForm > input[name="curPage"]').value
-		_saveCurrentRoomDesc(curPage)
+		_saveCurrentPage(curPage)
 		_showNextRoomDesc(e)
 	})
 })
-
-function _saveCurrentRoomDesc(pgNo)
-{
-	$.ajax(
-	{
-		url: `/savePage/${pgNo}`,
-    type: 'POST',
-    data: $('#myForm').serialize()
-	})
-}
 
 function _showNextRoomDesc(e)
 {
