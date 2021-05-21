@@ -95,8 +95,8 @@
         #myForm{position: relative;}
         img.logo {width: 260px;margin-right: 20px;margin-top: 2px;padding: 10px 0}
         .container{background: white}
-        .roomTypeContainer{display: none;}
-        .roomTypeContainer.active{display: block;}
+        .paginatedForm{display: none;}
+        .paginatedForm.active{display: block;}
         .fa-arrow-alt-circle-right, .fa-arrow-alt-circle-left {font-size: 40px;position: relative;top: 5px;left: 20px;}
         #rtright {margin-left: 12px;}
         .alert.alert-warning {width: 100%;z-index: 200;}

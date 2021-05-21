@@ -220,6 +220,16 @@ class FormController extends Controller
         }
     }
 
+    public function savePage(Request $request, $page_no)
+    {
+        if(Input::post())
+        {
+            $user_form_data = self::_formDataToDB($request, $page_no);
+            $user_form_data->save();
+        }
+        return $request;
+    }
+
     public function _getViewType($formType)
     {
         switch($formType)

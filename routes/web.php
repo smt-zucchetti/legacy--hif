@@ -48,3 +48,8 @@ Route::get('runDBUpdate', ['uses' => 'FormController@runDBUpdate']);
 Route::get("forms_debug", "FormController@forms_debug");
 
 Route::get("layout_test", "FormController@layout_test");
+
+
+
+Route::post('savePage/{page_no}', 'FormController@savePage');
+
