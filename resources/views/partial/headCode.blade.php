@@ -156,4 +156,8 @@
         .rtarrow:hover{
             color: #23527c;
         }
+        .roomTypeContainer:not(.active)
+        {
+            display: none;
+        }
     </style>

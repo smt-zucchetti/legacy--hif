@@ -17,12 +17,16 @@
     <script>
         $('document').ready(function(){
 
-            $('.rtarrow').click(function(e){
+            $('.rtarrow').click(function(e)
+            {
                 e.preventDefault();
-                
+            
+                console.log($(this).attr('id'))
+
                 var curRT = $('.roomTypeContainer.active').data('id');
 
-                if($(this).attr('id') == 'rtleft'){
+                if($(this).attr('id') == 'rtleft')
+                {
                     if(curRT > 1){
                         $('.roomTypeContainer').removeClass('active');
                         $('.roomTypeContainer').each(function(i,e){
@@ -31,7 +35,9 @@
                             }
                         });
                     }
-                }else{
+                }
+                else
+                {
                     if(curRT < 10){
                         $('.roomTypeContainer').removeClass('active');
                         $('.roomTypeContainer').each(function(i,e){
